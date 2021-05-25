@@ -27,8 +27,9 @@ int main() {
         // if sum is odd no spliting
         cout << "NO SOLUTION" << endl;
     }else {
+        cout << "YES" << endl;
         innerSum = sum/2;
-        for(i=n;i>=1;i++){
+        for(i=n;i>=1;i--){
             if (i <= innerSum) {
                 arr1.push_back(i);
                 innerSum -= i;
@@ -42,3 +43,4 @@ int main() {
     cout << arr2.size() << endl;
     display(arr2); 
 }
+s
