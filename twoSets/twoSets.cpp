@@ -43,4 +43,3 @@ int main() {
     cout << arr2.size() << endl;
     display(arr2); 
 }
-s
