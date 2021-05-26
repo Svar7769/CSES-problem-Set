@@ -5,27 +5,17 @@
 
 using namespace std;
 
-ll factorial(ll n, ll m) {
-    ll result = 1;
-    for (int i = 1; i <= n; i++)
-        result = (result * i);
- 
-    return result;
-}
 
 
 int main()
 {
     ll n,m=1e9+7;
     cin >> n;
-
-    ll fact = factorial(n,m); 
     ll count = 0;
 
-    // counting Zeroes 
-    while(fact%10==0){
-        count++;
-        fact /= 10; 
+    // counting NO odf Fives Which will be equal to no of zeros 
+    for(ll i=5; n/i >= 1; i *= 5) {
+        count += n/i;
     }
 
     cout << count << "\n";
