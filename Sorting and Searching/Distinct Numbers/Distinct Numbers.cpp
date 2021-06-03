@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    int n,count;
+    int n,ways=0;
     cin >> n;
     int arr [n];
 
@@ -15,8 +15,8 @@ int main() {
     sort(arr, arr + n);
 
     for (int i = 1; i<=n; i++) {
-        if (arr[i] != arr[i-1]) ++count;
+        if (arr[i] != arr[i-1]) ++ways;
     }
 
-    cout << count << endl;
+    cout << ways << endl;
 }
