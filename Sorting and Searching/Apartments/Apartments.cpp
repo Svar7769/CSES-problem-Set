@@ -26,11 +26,14 @@ int main() {
     int lastpos = 0;
 
     for (int i = 0; i < m; i++) {
-        for(int j = lastpos; i<n; i++) {
-            if (a[i] <= b[i] | a[i] <= b[i]-k | a[i] <= b[i]+k)
+        for(int j = lastpos; j<n; j++) {
+            if (a[j] >= b[i]-k && a[j] <= b[i]+k)
             {
                 ways++;
-                lastpos = j;
+                lastpos = j+1;
+                break;
+            }
+            if (b[i] <= a[i]-k) {
                 break;
             }
         }
