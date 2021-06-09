@@ -13,7 +13,6 @@ int main() {
     sort(str.begin(), str.end());
 
     do {
-
         permutation.push_back(str); 
     }while ( next_permutation(str.begin(), str.end()));
 
