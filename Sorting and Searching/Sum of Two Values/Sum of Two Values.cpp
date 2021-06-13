@@ -16,18 +16,32 @@ int main () {
 
     sort(coins.begin(), coins.end());
 
-    bool control = true;
 
-    for (int i = 0; i < n; i++){
-        if (control){
-            for (int j = n - 1; j >= 0; j--){
-                if (coins[i].first + coins[j].first == x) {
-                    cout << coins[i].second << " " << coins[j].second << "\n";
-                    control = false;
-                    break;
-                }
-            }
-        }else 
+    int i = 0;
+    int j = n-1;
+    long long count=0;
+    
+    while (i != j)
+    {
+        if (coins[i].first + coins[j].first == x)
+        {
+            cout << coins[i].second << " ";
+            cout << coins[j].second << "\n";
+            count++;
             break;
+        }
+        else if (coins[i].first + coins[j].first > x)
+        {
+            j--;
+            count++;
+        }
+        else if (coins[i].first + coins[j].first < x)
+        {
+            i++;
+            count++;
+        }
     }
+    if (i==j)
+        cout << "IMPOSSIBLE" << "\n";
+    cout << count << "\n";
 }
