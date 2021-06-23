@@ -1,46 +1,55 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-#define ll long long
+#define int long long
+#define endl '\n'
 
-int main()
+signed main()
 {
-    int n,t;
-    cin >> n >> t;
 
-    vector<pair<int, int>> arr, arr1;
-
-    int input = 0;
-    int count = 0;
-
-    for (int i = 0; i < n; i++)
+    int n, m;
+    cin >> n >> m;
+    int l = 1;
+    int ind[n + 2] = {0}, a[n + 1] = {0};
+    ind[n + 1] = n + 1;
+    for (int i = 1; i <= n; i++)
     {
-        cin >> input;
-        arr.push_back({input, i + 1});
+        int x;
+        cin >> x;
+        ind[x] = i;
+        a[i] = x;
     }
-
-    copy(arr.begin(), arr.end(), back_inserter(arr1));
-
-    while(t--) {
-        int a,b;
-        cin >> a >> b;
-
-        arr1.clear();
-        swap(arr[b - 1].first, arr[a - 1].first);
-
-        copy(arr.begin(), arr.end(), back_inserter(arr1));
-        
-        sort(arr1.begin(), arr1.end());
-
-        count = 0;
-
-        for (int i = 0; i < n; i++)
-        {
-            if (arr1[i].second > arr1[i + 1].second)
-                count++;
-        }
-
-        cout << count << "\n";
+    int c = 1;
+    for (int i = 1; i <= n; i++)
+    {
+        if (l > ind[i])
+            c++;
+        l = ind[i];
+    }
+    while (m--)
+    {
+        int x, y;
+        cin >> x >> y;
+        int r = a[x], s = a[y];
+        swap(a[x], a[y]);
+        if (ind[r - 1] <= ind[r] && ind[r - 1] > y)
+            c++;
+        if (ind[r - 1] > ind[r] && ind[r - 1] <= y)
+            c--;
+        if (ind[r] <= ind[r + 1] && y > ind[r + 1])
+            c++;
+        if (ind[r] > ind[r + 1] && y <= ind[r + 1])
+            c--;
+        ind[r] = y;
+        if (ind[s - 1] <= ind[s] && ind[s - 1] > x)
+            c++;
+        if (ind[s - 1] > ind[s] && ind[s - 1] <= x)
+            c--;
+        if (ind[s] <= ind[s + 1] && x > ind[s + 1])
+            c++;
+        if (ind[s] > ind[s + 1] && x <= ind[s + 1])
+            c--;
+        ind[s] = x;
+        cout << c << endl;
     }
 }
