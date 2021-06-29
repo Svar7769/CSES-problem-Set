@@ -20,6 +20,7 @@ signed main()
         a[i] = x;
     }
     int c = 1;
+    // getting actual no using no if invertions
     for (int i = 1; i <= n; i++)
     {
         if (l > ind[i])
@@ -32,6 +33,7 @@ signed main()
         cin >> x >> y;
         int r = a[x], s = a[y];
         swap(a[x], a[y]);
+        // checking if invertion related to swap still exist if or new invertion as occured 
         if (ind[r - 1] <= ind[r] && ind[r - 1] > y)
             c++;
         if (ind[r - 1] > ind[r] && ind[r - 1] <= y)
